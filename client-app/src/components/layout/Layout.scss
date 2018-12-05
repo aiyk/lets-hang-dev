@@ -1,0 +1,135 @@
+.navbar-wrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background-color: var(--main-nav-bg);
+  border-bottom: 2px solid var(--section-title);
+  z-index: 10;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 100%;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  img {
+    width: 100%;
+  }
+}
+.menu-list {
+  display: flex;
+  .menu-item {
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    color: #aaa;
+    margin: 0 5px;
+    font-size: 1.4rem;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+.nav-cta {
+  padding: 5px 15px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #aaa;
+  font-size: 14px;
+  color: #aaa;
+  margin-left: 10px;
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+}
+.header-rhs {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .rhs-wrap{
+      display: flex;
+      align-items: center;
+      .user-tab-icon{
+          margin-right: 30px;
+          cursor: pointer;
+      }
+  }
+  .user-actions {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 270px;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 0 8px 16px var(--main-nav-bg-lite);
+    -moz-box-shadow: 0 8px 16px var(--main-nav-bg-lite);
+    box-shadow: 0 8px 16px var(--main-nav-bg-lite);
+    padding-bottom: 10px;
+    z-index: 1;
+    background: #fff;
+    .actions-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 10px 5px 10px;
+      box-sizing: border-box;
+      .user-img {
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        -webkit-box-shadow: 0 8px 16px #ddd;
+        -moz-box-shadow: 0 8px 16px #ddd;
+        box-shadow: 0 8px 16px #ddd;
+        img {
+          width: 100%;
+        }
+      }
+      .user-intro {
+        position: relative;
+        width: 170px;
+        .settings-ico {
+          position: absolute;
+          position: absolute;
+          right: 0;
+          top: -13px;
+          cursor: pointer;
+        }
+        .name {
+          font-weight: bold;
+          color: #000;
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+        .saying {
+          color: #777;
+        }
+      }
+    }
+    .action-links {
+      margin-top: 10px;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      .action-link {
+        display: block;
+        cursor: pointer;
+        color: #777;
+        border-bottom: 1px solid #eee;
+        padding: 5px;
+        &:hover {
+          background: #e8e8e8;
+        }
+      }
+    }
+  }
+}
