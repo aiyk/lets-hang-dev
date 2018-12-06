@@ -1,20 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
-import PropTypes from 'prop-types'
 import { logoutUser } from '../../store/actions/authActions'
 import UserMenu from './UserMenu'
 import logo from '../../assets/logo/logo.svg'
 import notification from '../../assets/icons/notification.svg'
-import userimg from '../../assets/users/1.jpg'
 
 class SignedinLinks extends Component {
     
     state = {
-        id: 2,
-        firstname: 'Ikechukwu',
-        lastname: 'Ekwe',
-        quote: 'Perhaps the most important principle for the good algorithm designer is to refuse to be content. -Ullman, 1974',
         toggleUserMenu: false
     };
 
@@ -26,6 +20,7 @@ class SignedinLinks extends Component {
 
     render() {
         const { user } = this.props.auth;
+        
         return (
             <div className="main-nav">
                 <Link to="/" className="nav-logo"><img src={logo} alt="logo" /></Link>
@@ -40,7 +35,7 @@ class SignedinLinks extends Component {
                         <div onClick={this.handleToggleMenu} className="user-data">
                             <div className="user-name">{user.firstname}</div>
                             <div className="user-loggedin">
-                                <img src={userimg} alt="user.firstname" title="you must have a Gravatar connected to youe email to display an image" />
+                                <img src={user.avatar} alt="user.firstname" title="you must have a Gravatar connected to youe email to display an image" />
                             </div>
                         </div>
                     </div>
@@ -49,11 +44,6 @@ class SignedinLinks extends Component {
             </div>
         )
     }
-}
-
-SignedinLinks.PropTypes = {
-    SignedinLinks: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

@@ -6,7 +6,7 @@ import { compose } from "redux";
 
 class PeopleList extends Component {
   render() {
-    //console.log(this.props); 
+    console.log(this.props); 
     const { people } = this.props;
     const returnList = people.length ? (
       people.map(person => {
