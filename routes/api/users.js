@@ -36,16 +36,20 @@ router.post('/register', async (req, res) => {
     });
 
     const newUser = new User({
-      name: req.body.name,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
+      phone: req.body.phone,
+      password: req.body.password,
       avatar,
-      password: req.body.password
+      private: req.body.private
     });
 
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(newUser.password, salt, async (err, hash) => {
         if (err) throw err;
         newUser.password = hash;
+        console.log(newUser);
         const user = await newUser.save();
         res.send(user);
       });

@@ -27,13 +27,12 @@ class Login extends Component {
     }
     handleInputChange = e => {
         this.setState({
-            email: e.target.value,
-            password: e.target.value
+            [e.target.name]: e.target.value
         });
     };
     handleSubmit = (e) => {
         e.preventDefault();
-
+        
         const userData = {
             email: this.state.email,
             password: this.state.password
@@ -44,7 +43,7 @@ class Login extends Component {
 
     render() {
         const { errors } = this.state;
-
+        
         // const errorDisplay = errors ? (
         //     <div className="form-error">{errors[0]}</div>
         // ) : (null);
@@ -86,7 +85,7 @@ class Login extends Component {
                     <form onSubmit={this.handleSubmit} >
                         <input
                             type="text"
-                            id="email"
+                            name="email"
                             className="site-input"
                             placeholder="Email"
                             onChange={this.handleInputChange}
@@ -94,7 +93,7 @@ class Login extends Component {
                         {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                         <input
                             className="site-input"
-                            id="password"
+                            name="password"
                             type="password"
                             placeholder="Password"
                             onChange={this.handleInputChange}
