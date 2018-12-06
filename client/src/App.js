@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import axios from 'axios';
 import store from './store/Store'
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
@@ -15,7 +16,11 @@ import PeopleList from './components/people/PeopleList';
 import PersonProfile from './components/people/person/PersonProfile';
 import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
-import TestingProtectedRoute from './components/testingProtectedRoute/TestingProtectedRoute';
+
+//axios global config
+axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 //check for token
 if(localStorage.jwtToken){
@@ -48,7 +53,6 @@ class App extends Component {
               <Route exact path="/profile/:person_id" component={ PersonProfile } />
               <Route exact path="/find-place" component={ Places } />
               <Route exact path="/profile/:place_id" component={ PlaceProfile } />
-              <Route exact path="/testing-protected" component={ TestingProtectedRoute } />
             </Switch>
           </div>
         </div>
