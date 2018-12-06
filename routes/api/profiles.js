@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 // Load User model
-const profile = require('../../models/User');
+const Profile = require('../../models/User');
 
 //@route    GET api/profile/test
 //@desc     Tests profile route

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginUser } from '../../store/actions/authActions';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Login extends Component {
 
@@ -32,7 +33,7 @@ class Login extends Component {
     };
     handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const userData = {
             email: this.state.email,
             password: this.state.password
@@ -43,7 +44,7 @@ class Login extends Component {
 
     render() {
         const { errors } = this.state;
-        
+
         // const errorDisplay = errors ? (
         //     <div className="form-error">{errors[0]}</div>
         // ) : (null);
@@ -83,22 +84,20 @@ class Login extends Component {
                 </div>
                 <div className="split-screen-rhs">
                     <form onSubmit={this.handleSubmit} >
-                        <input
-                            type="text"
-                            name="email"
-                            className="site-input"
-                            placeholder="Email"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="email"
+                         name="email"
+                         placeholder="Email"
+                         onChange={this.handleInputChange}
+                         error={errors.email}
                         />
-                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                        <input
-                            className="site-input"
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="password"
+                         name="password"
+                         placeholder="Password"
+                         onChange={this.handleInputChange}
+                         error={errors.password}
                         />
-                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                         <button className="btn btn-x2 btn-default">Sign In</button>
                     </form>
                 </div>

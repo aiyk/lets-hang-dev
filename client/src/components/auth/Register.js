@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { registerUser } from '../../store/actions/authActions'
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Register extends Component {
     state = {
@@ -69,54 +70,48 @@ class Register extends Component {
                 <div className="split-screen-rhs">
 
                     <form onSubmit={this.handleFormSubmit}>
-                        <input
-                            type="text"
-                            name="firstname"
-                            className="site-input"
-                            placeholder="First Name"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="text"
+                         name="firstname"
+                         placeholder="First Name"
+                         onChange={this.handleInputChange}
+                         error={errors.firstname}
                         />
-                        {errors.firstname && (<div className="invalid-feedback">{errors.firstname}</div>)}
-                        <input
-                            type="text"
-                            name="lastname"
-                            className="site-input"
-                            placeholder="Last Name"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="text"
+                         name="lastname"
+                         placeholder="Last Name"
+                         onChange={this.handleInputChange}
+                         error={errors.lastname}
                         />
-                        {errors.lastname && (<div className="invalid-feedback">{errors.lastname}</div>)}
-                        <input
-                            type="email"
-                            name="email"
-                            className="site-input"
-                            placeholder="Email Address"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="email"
+                         name="email"
+                         placeholder="Email Address"
+                         onChange={this.handleInputChange}
+                         error={errors.email}
                         />
-                        {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-                        <input
-                            type="text"
-                            name="phone"
-                            className="site-input"
-                            placeholder="Phone Number"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="text"
+                         name="phone"
+                         placeholder="Phone Number"
+                         onChange={this.handleInputChange}
+                         error={errors.phone}
                         />
-                        {errors.phone && (<div className="invalid-feedback">{errors.phone}</div>)}
-                        <input
-                            className="site-input"
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="password"
+                         name="password"
+                         placeholder="Password"
+                         onChange={this.handleInputChange}
+                         error={errors.password}
                         />
-                        {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-                        <input
-                            className="site-input"
-                            name="confirmPassword"
-                            type="password"
-                            placeholder="Confirm Password"
-                            onChange={this.handleInputChange}
+                        <TextFieldGroup 
+                         type="password"
+                         name="confirmPassword"
+                         placeholder="Confirm Password"
+                         onChange={this.handleInputChange}
+                         error={errors.confirmPassword}
                         />
-                        {errors.confirmPassword && (<div className="invalid-feedback">{errors.confirmPassword}</div>)}
                         <label htmlFor="private">Private</label>
                         <input
                             type="checkbox"

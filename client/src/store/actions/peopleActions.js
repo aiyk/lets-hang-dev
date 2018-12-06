@@ -5,7 +5,7 @@ import { GET_ERRORS } from './types';
 export const updateProfile = (userData, history) => dispatch => {
     
     axios
-        .post('/api/users/register', userData)
+        .post('/api/profile', userData)
         .then(res => history.push('/login'))
         .catch(err => 
             dispatch({
@@ -18,7 +18,7 @@ export const updateProfile = (userData, history) => dispatch => {
 export const getUsers = (userData, history) => dispatch => {
     
     axios
-        .get('/api/users/register', userData)
+        .get('/api/profile/all')
         .then(res => history.push('/login'))
         .catch(err => 
             dispatch({
