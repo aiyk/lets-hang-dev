@@ -1,29 +1,34 @@
 import axios from 'axios';
-import jwt_decode from 'jwt-decode';
-import { GET_ERRORS } from './types';
+import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS } from './types';
 
-export const updateProfile = (userData, history) => dispatch => {
-    
-    axios
-        .post('/api/profile', userData)
-        .then(res => history.push('/login'))
-        .catch(err => 
+//get current profile
+export const getCurrentProfile = () => dispatch => {
+    dispatch(setProfileLoading());
+    axios.get('/api/profile')
+        .then(res => 
             dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data 
+                type: GET_PROFILE,
+                payload: res.data
             })
-        );
+        )
+        .catch( err =>
+            dispatch({
+                type: GET_PROFILE,
+                payload: {}
+            })    
+        )
 }
 
-export const getUsers = (userData, history) => dispatch => {
-    
-    axios
-        .get('/api/profile/all')
-        .then(res => history.push('/login'))
-        .catch(err => 
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data 
-            })
-        );
+//profile loading
+export const setProfileLoading = () =>{
+    return {
+        type: PROFILE_LOADING
+    }
+}
+
+//clear profile
+export const clearCurrentProfile = () =>{ 
+    return {
+        type: CLEAR_CURRENT_PROFILE
+    }
 }

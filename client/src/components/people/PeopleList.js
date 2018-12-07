@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import "./PeopleList.scss";
-import PersonItem from "./PersonItem";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import PropTypes from 'prop-types';
+import { getCurrentProfile } from '../../store/actions/peopleActions';
+import "./PeopleList.scss";
+import PersonItem from "./PersonItem";
 
 class PeopleList extends Component {
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
+
   render() {
-    console.log(this.props); 
-    const { people } = this.props;
-    const returnList = people.length ? (
-      people.map(person => {
-        return <div className="return-wrap" key={person.id}><PersonItem person={person} /></div> 
-      })
-    ) : (<div>Empty list returned</div>);
+    //console.log(this.props); 
+    // const { people } = this.props;
+    // const returnList = people.length ? (
+    //   people.map(person => {
+    //     return <div className="return-wrap" key={person.id}><PersonItem person={person} /></div> 
+    //   })
+    // ) : (<div>Empty list returned</div>);
     
     return(
       <div className="full-screen-lite">
@@ -22,7 +28,7 @@ class PeopleList extends Component {
               <div className="tab-title">Find Someone</div>
               <input type="text" id="findInput" className="find-input" />
               <div className="feeds">
-                <div>{returnList}</div>
+                {/* <div>{returnList}</div> */}
               </div>
             </div>
           </div>
@@ -41,5 +47,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-  connect(mapStateToProps)
+  connect(null, { getCurrentProfile })
 )(PeopleList)

@@ -1,55 +1,30 @@
-const initState = {
-    people: [
-        {
-            id: 1,
-            firstname: 'Ikechukwu',
-            lastname: 'Ekwe',
-            email: 'aiyk.ekwe@gmail.com',
-            password: 'secret',
-            phone: '08143496625',
-            gender: 'Male',
-            location: 'Lagos Nigeria',
-            profession: 'Software Engineer',
-            private: false,
-            profileImg: '',
-            quote: 'Perhaps the most important principle for the good algorithm designer is to refuse to be content. -Ullman, 1974'
-        },
-        {
-            id: 2,
-            firstname: 'Jonas',
-            lastname: 'Daniels',
-            email: 'jonas227e@gmail.com',
-            phone: '08099887321',
-            gender: 'Male',
-            location: 'Berlin Germany',
-            profession: 'Sales Executive',
-            quote: 'Perhaps the most important principle for the good algorithm designer is to refuse to be content. -Ullman, 1974'
-        },
-        {
-            id: 3,
-            firstname: 'Sandra',
-            lastname: 'Jones',
-            email: 'sandystar@gmail.com',
-            phone: '07021212332',
-            gender: 'Female',
-            location: 'Lagos - Nigeria',
-            profession: 'Sales Executive',
-            quote: 'Perhaps the most important principle for the good algorithm designer is to refuse to be content. -Ullman, 1974'
-        }
-    ]
+import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE} from '../actions/types'
+
+const initialState = {
+    person: null,
+    people: null,
+    loading: false
 }
 
-const peopleReducer = (state=initState, action) => {
+export default function(state=initialState, action){
     switch(action.type){
-        case 'CREATE_PERSON':
-            console.log('created person', action.person);
-            return state;
-        case 'CREATE_PERSON_ERROR':
-            console.log('created person error', action.err);
-            return state;
-        default:
+        case PROFILE_LOADING:
+            return {
+                ...state,
+                loading: true
+            }
+        case GET_PROFILE:
+            return {
+                ...state,
+                profile: action.payload,
+                loading: false
+            }
+        case CLEAR_CURRENT_PROFILE:
+            return {
+                ...state,
+                profile: null
+            }
+        default: 
             return state;
     }
 }
-
-export default peopleReducer

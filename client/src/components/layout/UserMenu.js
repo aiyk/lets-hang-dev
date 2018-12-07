@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import cog from '../../assets/icons/cog.svg'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../store/actions/authActions'
+import { clearCurrentProfile } from '../../store/actions/peopleActions'
 
 function UserMenu(props) {
     
