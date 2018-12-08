@@ -12,10 +12,11 @@ class PeopleList extends Component {
   }
 
   render() {
-    //console.log(this.props); 
-    // const { people } = this.props;
-    // const returnList = people.length ? (
-    //   people.map(person => {
+    const { user } = this.props.auth;
+    const { profile, loading } = this.props.profile;
+
+    // const returnList = profile === null || loading ? (
+    //   profile.map(person => {
     //     return <div className="return-wrap" key={person.id}><PersonItem person={person} /></div> 
     //   })
     // ) : (<div>Empty list returned</div>);
@@ -42,10 +43,17 @@ class PeopleList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    people: state.people.people
+    profile: state.profile,
+    auth: state.auth
   }
 }
 
+PeopleList.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
+}
+
 export default compose(
-  connect(null, { getCurrentProfile })
+  connect(mapStateToProps, { getCurrentProfile })
 )(PeopleList)
