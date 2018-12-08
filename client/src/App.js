@@ -15,8 +15,8 @@ import Homepage from './components/homepage/Homepage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Profiles from './components/profiles/Profiles';
-import PersonProfile from './components/people/person/PersonProfile';
-import CurrentProfile from './components/people/person/CurrentProfile';
+import PersonProfile from './components/profiles/profile/PersonProfile';
+import CurrentProfile from './components/profiles/profile/CurrentProfile';
 import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
 
@@ -26,7 +26,7 @@ axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 //check for token
-if(localStorage.jwtToken){
+if (localStorage.jwtToken) {
   //set token header auth
   setAuthToken(localStorage.jwtToken);
   //decode token and get user info and expiration
@@ -35,7 +35,7 @@ if(localStorage.jwtToken){
   store.dispatch(setCurrentUser(decoded));
   //check for expired token
   const currentTime = Date.now() / 1000;
-  if(decoded.exp < currentTime){
+  if (decoded.exp < currentTime) {
     //logout user
     store.dispatch(logoutUser());
     //clear current profile
@@ -50,17 +50,17 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar /> 
+          <Navbar />
           <div className="site-wrap">
             <Switch>
-              <Route exact path="/" component={ Homepage } />
-              <Route exact path="/login" component={ Login } />
-              <Route exact path="/registration" component={ Register } />
-              <PrivateRoute exact path="/dashboard" component={ CurrentProfile } />
-              <Route exact path="/find-person" component={ Profiles } />
-              <Route exact path="/profile/:person_id" component={ PersonProfile } />
-              <Route exact path="/find-place" component={ Places } />
-              <Route exact path="/profile/:place_id" component={ PlaceProfile } />
+              <Route exact path="/" component={Homepage} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/registration" component={Register} />
+              <PrivateRoute exact path="/dashboard" component={CurrentProfile} />
+              <Route exact path="/find-person" component={Profiles} />
+              <Route exact path="/profile/:person_id" component={PersonProfile} />
+              <Route exact path="/find-place" component={Places} />
+              <Route exact path="/profile/:place_id" component={PlaceProfile} />
             </Switch>
           </div>
         </div>
