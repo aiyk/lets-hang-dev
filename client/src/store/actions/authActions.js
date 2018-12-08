@@ -6,14 +6,14 @@ import { clearCurrentProfile } from './peopleActions';
 
 //Register user
 export const registerUser = (userData, history) => dispatch => {
-    
+
     axios
         .post('/api/users/register', userData)
         .then(res => history.push('/login'))
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data 
+                payload: err.response.data
             })
         );
 }
@@ -39,7 +39,7 @@ export const loginUser = (userData) => dispatch => {
             // console.log(err.response);
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data 
+                payload: err.response.data
             })
         }
         );
