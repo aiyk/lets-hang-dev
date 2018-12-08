@@ -1,7 +1,7 @@
 import React from 'react'
 import StripList from '../../reusables/StripList'
 
-export default function PersonCommunity() {
+export default function ProfileCommunity() {
   return (
     <div className="feeds-wrap">
       <div className="community">
