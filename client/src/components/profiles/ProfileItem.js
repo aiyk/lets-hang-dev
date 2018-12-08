@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types'
-import isEmpty from '../../validation/is-empty'
 import Feed from '../reusables/Feed'
 
 class ProfileItem extends Component {

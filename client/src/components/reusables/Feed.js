@@ -1,4 +1,5 @@
 import React from 'react'
+import isEmpty from '../../validation/is-empty'
 
 export default function Feed({profile}) {
   return (
