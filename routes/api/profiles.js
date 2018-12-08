@@ -38,13 +38,12 @@ router.get(
 // @access  Public
 router.get('/all', (req, res) => {
     const errors = {};
-  
     Profile.find()
-      .populate('user', ['name', 'avatar'])
+      .populate('user', ['firstname', 'lastname', 'avatar'])
       .then(profiles => {
         if (!profiles) {
           errors.noprofile = 'There are no profiles';
-          return res.status(404).json(errors);
+          return res.status(404).json(errors); 
         }
   
         res.json(profiles);

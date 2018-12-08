@@ -7,14 +7,16 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
 import { clearCurrentProfile } from './store/actions/peopleActions';
+import PrivateRoute from './components/common/PrivateRoute';
 
 import './App.scss';
 import Navbar from './components/layout/Navbar';
 import Homepage from './components/homepage/Homepage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import PeopleList from './components/people/PeopleList';
+import Profiles from './components/profiles/Profiles';
 import PersonProfile from './components/people/person/PersonProfile';
+import CurrentProfile from './components/people/person/CurrentProfile';
 import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
 
@@ -54,7 +56,8 @@ class App extends Component {
               <Route exact path="/" component={ Homepage } />
               <Route exact path="/login" component={ Login } />
               <Route exact path="/registration" component={ Register } />
-              <Route exact path="/find-person" component={ PeopleList } />
+              <PrivateRoute exact path="/dashboard" component={ CurrentProfile } />
+              <Route exact path="/find-person" component={ Profiles } />
               <Route exact path="/profile/:person_id" component={ PersonProfile } />
               <Route exact path="/find-place" component={ Places } />
               <Route exact path="/profile/:place_id" component={ PlaceProfile } />

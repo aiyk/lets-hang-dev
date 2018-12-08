@@ -28,7 +28,7 @@ class UserMenu extends Component {
                         <div className="saying">{user.quote}</div>
                     </div>
                 </div>
-                <Link onClick={this.props.handleToggleMenu} to={'profile/' + user.id}><button className="btn btn-center btn-x1 btn-full btn-hollow ">View Profile</button></Link>
+                <Link onClick={this.props.handleToggleMenu} to={'/dashboard' + user.id}><button className="btn btn-center btn-x1 btn-full btn-hollow ">View Profile</button></Link>
                 <div className="action-links">
                     <Link onClick={this.props.handleToggleMenu} className="action-link" to="/">My Meetings</Link>
                     <Link onClick={this.props.handleToggleMenu} className="action-link" to="/">My Circles</Link>
