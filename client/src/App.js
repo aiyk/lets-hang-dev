@@ -5,6 +5,7 @@ import axios from 'axios';
 import store from './store/Store'
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
+import axiosGlobals from './utils/axiosGlobals';
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
 import { clearCurrentProfile } from './store/actions/profileActions';
 import PrivateRoute from './components/common/PrivateRoute';
@@ -19,6 +20,9 @@ import PersonProfile from './components/profiles/profile/PersonProfile';
 import CurrentProfile from './components/profiles/profile/CurrentProfile';
 import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
+
+//axios global config
+axiosGlobals();
 
 //check for token
 if (localStorage.jwtToken) {
