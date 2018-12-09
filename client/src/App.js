@@ -20,11 +20,6 @@ import CurrentProfile from './components/profiles/profile/CurrentProfile';
 import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
 
-//axios global config
-axios.defaults.baseURL = 'https://lets-hang.herokuapp.com';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 //check for token
 if (localStorage.jwtToken) {
   //set token header auth
