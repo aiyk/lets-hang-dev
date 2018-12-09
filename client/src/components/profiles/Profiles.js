@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Spinner from '../common/Spinner'
-import { getProfiles } from '../../store/actions/peopleActions'
+import { getProfiles } from '../../store/actions/profileActions'
 import ProfileItem from './ProfileItem'
 import './Profiles.scss'
 
@@ -12,10 +12,9 @@ class Profiles extends Component {
         this.props.getProfiles();
     }
     render() {
-        console.log(this.props);
         const { profiles, loading } = this.props.profile;
         let profileItems;
-
+        
         if (profiles === null || loading) {
             profileItems = <Spinner />;
         } else {

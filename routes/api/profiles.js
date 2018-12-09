@@ -20,7 +20,6 @@ router.get(
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const errors = {};
-    console.log('***8888***' + req.user.id);
     Profile.findOne({ _id: req.user.id })
       .populate('user', ['firstname', 'lastname', 'avatar'])
       .then(user => {
@@ -46,7 +45,6 @@ router.get('/all', (req, res) => {
         errors.noprofile = 'There are no profiles';
         return res.status(404).json(errors);
       }
-
       res.json(profiles);
     })
     .catch(err => res.status(404).json({ profile: 'There are no profiles' }));

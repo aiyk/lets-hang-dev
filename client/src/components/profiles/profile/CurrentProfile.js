@@ -60,7 +60,7 @@ class CurrentProfile extends Component {
         const { profile, loading } = this.props;
     
         let profileContent;
-        
+
         let home_base = this.state.home_tab_classes[0];
         let home_active = '';
         let tab_content = '';
@@ -94,7 +94,6 @@ class CurrentProfile extends Component {
         } else {
             //check if logged in user has profile data
             if (Object.keys(profile).length > 0) {
-                console.log('***********weve gat a pulse' + profile);
                 profileContent = (
                     <div className="full-screen-view">
                         <div className="full-screen-bg-overlay pre-profile">
