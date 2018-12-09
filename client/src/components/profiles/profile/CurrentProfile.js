@@ -58,7 +58,7 @@ class CurrentProfile extends Component {
     render() {
         const { user } = this.props.auth;
         const { profile, loading } = this.props;
-    
+        console.log(profile);
         let profileContent;
 
         let home_base = this.state.home_tab_classes[0];
