@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from 'prop-types';
-import { getCurrentProfile } from '../../store/actions/peopleActions';
+import { getCurrentProfile } from '../../store/actions/profileActions';
 import "./PeopleList.scss";
 import PersonItem from "./PersonItem";
 
@@ -20,8 +20,8 @@ class PeopleList extends Component {
     //     return <div className="return-wrap" key={person.id}><PersonItem person={person} /></div> 
     //   })
     // ) : (<div>Empty list returned</div>);
-    
-    return(
+
+    return (
       <div className="full-screen-lite">
         <div className="pre-profile">
           <div className="profile-body nice nice-scroll">
@@ -34,7 +34,7 @@ class PeopleList extends Component {
             </div>
           </div>
 
-          <div className="right-col nice nice-scroll"></div> 
+          <div className="right-col nice nice-scroll"></div>
         </div>
       </div>
     )

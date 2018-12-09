@@ -2,18 +2,18 @@ import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
-import { clearCurrentProfile } from './peopleActions';
+import { clearCurrentProfile } from './profileActions';
 
 //Register user
 export const registerUser = (userData, history) => dispatch => {
-    
+
     axios
         .post('/api/users/register', userData)
         .then(res => history.push('/login'))
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data 
+                payload: err.response.data
             })
         );
 }
@@ -39,7 +39,7 @@ export const loginUser = (userData) => dispatch => {
             // console.log(err.response);
             dispatch({
                 type: GET_ERRORS,
-                payload: err.response.data 
+                payload: err.response.data
             })
         }
         );

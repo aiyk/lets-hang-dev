@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import PropTypes from 'prop-types';
 import Spinner from '../../common/Spinner';
-import { getCurrentProfile } from '../../../store/actions/peopleActions';
+import { getCurrentProfile } from '../../../store/actions/profileActions';
 import ProfileActivities from './ProfileActivities'
 import ProfileCommunity from './ProfileCommunity'
 import ProfileFeeds from './ProfileFeeds'
@@ -54,21 +54,26 @@ class CurrentProfile extends Component {
             communities_tab_classes: ['tab-menu-item', 'active-tab']
         });
     }
-
+    
     render() {
+        const { user } = this.props.auth;
+        const { profile, loading } = this.props;
+        console.log(profile);
+        let profileContent;
+
         let home_base = this.state.home_tab_classes[0];
         let home_active = '';
         let tab_content = '';
 
         if (this.state.home_tab_classes.length > 1) {
             home_active = this.state.home_tab_classes[1];
-            tab_content = <ProfileFeeds feed={this.state.PersonSummary} />;
+            tab_content = <ProfileFeeds profile={profile} />;
         }
         let activities_base = this.state.activities_tab_classes[0];
         let activities_active = '';
         if (this.state.activities_tab_classes.length > 1) {
             activities_active = this.state.activities_tab_classes[1];
-            tab_content = <ProfileActivities feed={this.state.PersonSummary} />;
+            tab_content = <ProfileActivities profile={profile} />;
         }
         let messages_base = this.state.messages_tab_classes[0];
         let messages_active = '';
@@ -82,15 +87,11 @@ class CurrentProfile extends Component {
             communities_active = this.state.communities_tab_classes[1];
             tab_content = <ProfileCommunity />;
         }
-        
-        const { user } = this.props.auth;
-        const { profile, loading } = this.props;
 
-        let profileContent;
 
         if (profile === null || loading) {
             profileContent = <Spinner />;
-        } else { 
+        } else {
             //check if logged in user has profile data
             if (Object.keys(profile).length > 0) {
                 profileContent = (
@@ -107,7 +108,7 @@ class CurrentProfile extends Component {
                                 <div className="tab-content">{tab_content}</div>
                             </div>
 
-                            <ProfileSummary person={this.person} />
+                            <ProfileSummary profile={profile} />
                         </div>
                     </div>);
             } else {
@@ -124,7 +125,7 @@ class CurrentProfile extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.people.profile,
+        profile: state.profile,
         auth: state.auth
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import isEmpty from '../../validation/is-empty'
 
-export default function Feed({profile}) {
+export default function Feed({profile}) { 
   return (
     <div className="feed">
         <div className="feed-head">

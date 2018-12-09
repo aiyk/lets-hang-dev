@@ -6,7 +6,7 @@ import store from './store/Store'
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './store/actions/authActions';
-import { clearCurrentProfile } from './store/actions/peopleActions';
+import { clearCurrentProfile } from './store/actions/profileActions';
 import PrivateRoute from './components/common/PrivateRoute';
 
 import './App.scss';
@@ -21,7 +21,7 @@ import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
 
 //axios global config
-axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.baseURL = 'http://localhost:5000';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -69,4 +69,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; 
