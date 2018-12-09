@@ -21,7 +21,7 @@ import Places from './components/places/Places';
 import PlaceProfile from './components/places/PlaceProfile';
 
 //axios global config
-// axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://lets-hang.herokuapp.com';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
