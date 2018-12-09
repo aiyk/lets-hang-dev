@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import axios from 'axios';
 import store from './store/Store'
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
