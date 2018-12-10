@@ -12,6 +12,7 @@ import {
 // Get current profile
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
+
   axios
     .get('/api/profile')
     .then(res =>
@@ -24,25 +25,6 @@ export const getCurrentProfile = () => dispatch => {
       dispatch({
         type: GET_PROFILE,
         payload: {}
-      })
-    );
-};
-
-// Get profile by handle
-export const getProfileByHandle = handle => dispatch => {
-  dispatch(setProfileLoading());
-  axios
-    .get(`/api/profile/handle/${handle}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: null
       })
     );
 };
@@ -63,6 +45,7 @@ export const createProfile = (profileData, history) => dispatch => {
 // Get all profiles
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
+  delete axios.defaults.headers.common['Authorization'];
   axios
     .get('/api/profile/all')
     .then(res =>

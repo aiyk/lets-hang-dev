@@ -17,9 +17,9 @@ router.get('/test', (req, res) => res.json({ msg: 'Profile works' }));
 // @access  Private
 router.get(
   '/',
-  passport.authenticate('jwt', { session: false }),
+
   (req, res) => {
-    const errors = {};
+    const errors = {}; console.log('[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]');
     Profile.findOne({ _id: req.user.id })
       .populate('user', ['firstname', 'lastname', 'avatar'])
       .then(user => {
