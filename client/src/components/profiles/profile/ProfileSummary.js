@@ -2,7 +2,7 @@ import React from 'react'
 import userimage from '../../../assets/users/2.jpg'
 
 export default function ProfileSummary({profile}) {
-  return (
+  return ( 
     <div className="profile-summary nice nice-scroll">
         <div className="profile-img">
             <img src={userimage} alt="profile" />

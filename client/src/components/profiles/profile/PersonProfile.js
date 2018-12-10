@@ -128,7 +128,6 @@ class PersonProfile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   const person_id = this.props.match.params.person_id;
   const people = state;
   const person = people ? people[person_id] : null
