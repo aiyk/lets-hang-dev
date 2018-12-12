@@ -17,8 +17,9 @@ class CurrentProfile extends Component {
         messages_tab_classes: ['tab-menu-item'],
         communities_tab_classes: ['tab-menu-item']
     }
-
+    
     componentDidMount() {
+        const { user } = this.props.auth; 
         this.props.getCurrentProfile();
     }
 
@@ -56,9 +57,8 @@ class CurrentProfile extends Component {
     }
     
     render() {
-        const { user } = this.props.auth;
+        // const { user } = this.props.auth;
         const { profile, loading } = this.props;
-        console.log(profile);
         let profileContent;
 
         let home_base = this.state.home_tab_classes[0];

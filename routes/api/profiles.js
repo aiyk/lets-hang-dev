@@ -19,7 +19,7 @@ router.get(
   '/',
 
   (req, res) => {
-    const errors = {}; console.log('[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]');
+    const errors = {}; console.log('[[[[[[[[[[[[[[[[[[[[0]]]]]]]]]]]]]]]]]' + req.headers.Authorization.user.id);
     Profile.findOne({ _id: req.user.id })
       .populate('user', ['firstname', 'lastname', 'avatar'])
       .then(user => {
@@ -56,7 +56,7 @@ router.get('/all', (req, res) => {
 
 router.get('/user/:user_id', (req, res) => {
   const errors = {};
-
+  console.log('((((((((0))))))' + req.params.user_id);
   Profile.findOne({ user: req.params.user_id })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
